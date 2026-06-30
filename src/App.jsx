@@ -70,6 +70,41 @@ function TitleSlide() {
   )
 }
 
+function IndexSlide() {
+  const sections = [
+    ['01', 'Contexto del negocio', 'SeguroTotal y activos críticos del portal.'],
+    ['02', 'Metodología', 'DVWA, payloads, CVSS y matriz de riesgo.'],
+    ['03', 'Hallazgos técnicos', 'SQL Injection, XSS Reflected y Command Injection.'],
+    ['04', 'Resultados CVSS', 'Comparación de gravedad técnica.'],
+    ['05', 'Matriz de riesgo', 'Priorización según probabilidad e impacto.'],
+    ['06', 'Controles', 'Prevención, mitigación y medidas transversales.'],
+    ['07', 'Recuperación', 'Plan de respuesta ante incidentes.'],
+    ['08', 'Conclusión y enlaces', 'Cierre ejecutivo y perfil GitHub.'],
+  ]
+
+  return (
+    <section className="slide index-slide">
+      <Header
+        eyebrow="00 · Índice"
+        title="Ruta de la presentación"
+        subtitle="Resumen de las secciones principales de la auditoría web realizada a SeguroTotal."
+      />
+
+      <div className="index-grid">
+        {sections.map(([number, title, text]) => (
+          <article className="index-card" key={title}>
+            <span>{number}</span>
+            <div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function ContextSlide() {
   return (
     <section className="slide split-slide">
@@ -270,6 +305,32 @@ function ClosingSlide() {
   )
 }
 
+function LinksSlide() {
+  return (
+    <section className="slide links-slide">
+      <Header
+        eyebrow="11 · Enlaces"
+        title="Repositorio y perfil"
+        subtitle="Espacio final para dejar disponibles los enlaces asociados al proyecto."
+      />
+
+      <div className="links-content">
+        <article className="link-card">
+          <span>GitHub</span>
+          <h3>Perfil de desarrollo</h3>
+          <p>
+            Enlace al perfil utilizado para publicar proyectos, repositorios y avances relacionados con el desarrollo web.
+          </p>
+
+          <a href="https://github.com/Voltydemon" target="_blank" rel="noreferrer">
+            github.com/Voltydemon
+          </a>
+        </article>
+      </div>
+    </section>
+  )
+}
+
 function Header({ eyebrow, title, subtitle = '' }) {
   return (
     <header className="slide-header">
@@ -282,6 +343,7 @@ function Header({ eyebrow, title, subtitle = '' }) {
 
 const slides = [
   { title: 'Portada', component: <TitleSlide /> },
+  { title: 'Índice', component: <IndexSlide /> },
   { title: 'Contexto', component: <ContextSlide /> },
   { title: 'Metodología', component: <MethodSlide /> },
   {
@@ -334,6 +396,7 @@ const slides = [
   { title: 'Controles', component: <ControlsSlide /> },
   { title: 'Recuperación', component: <RecoverySlide /> },
   { title: 'Cierre', component: <ClosingSlide /> },
+  { title: 'Enlaces', component: <LinksSlide /> },
 ]
 
 function App() {
